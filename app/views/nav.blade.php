@@ -15,7 +15,8 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li><a href="{{action('PageController@showWelcome')}}">Home</a></li>
-      <li><a href="{{action('PageController@createRoom')}}">Create Presentation Room</a></li>
+      <li><a href="{{action('PageController@createRoom')}}">Create Room</a></li>
+      <li><a href="{{action('PageController@viewAllRooms')}}">View My Rooms</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       @if (Auth::guest())

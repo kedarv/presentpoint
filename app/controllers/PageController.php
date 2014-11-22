@@ -35,7 +35,7 @@ class PageController extends BaseController {
 				'hooks' => Input::get('hooks'),
 			),
 			array(
-				'name' => 'required|alpha_dash',
+				'name' => 'required|alpha_spaces',
 				'identifier' => 'required|alpha|min:3',
 				'hooks' => 'required|alpha_dash|min:1'
 			)
@@ -104,5 +104,12 @@ class PageController extends BaseController {
 			header('Content-Type: application/json');
 			echo json_encode($return_data);
 		}
+	}
+
+	public function viewAllRooms() {
+		$room = Room::where('uid', '=', Auth::user()->id)->get()->toArray();
+		$data['name'] = "View All Rooms";
+		return View::make('viewallrooms', compact('data', 'room'));
+
 	}
 }
