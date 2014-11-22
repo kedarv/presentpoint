@@ -110,6 +110,41 @@ class PageController extends BaseController {
 		$room = Room::where('uid', '=', Auth::user()->id)->get()->toArray();
 		$data['name'] = "View All Rooms";
 		return View::make('viewallrooms', compact('data', 'room'));
+	}
 
+	public function getRoom($id) {
+		if (Auth::check()) {
+			$query = Room::where('uid', '=', Auth::user()->id);
+			$count = $query->count();
+			if($count > 0) {
+				$getList = $query->select('id')->get()->toArray();
+				//Log::info(var_dump($getList));
+				foreach($getList as $value) {
+					if(in_array($id, $value)) {
+						$validator = Validator::make(
+						    array('id' => $id),
+						    array('id' => 'required|numeric')
+						);
+						if ($validator->fails()) {
+							$data['name'] = "Error";
+						}
+						else {
+							$data['name'] = "Viewing Room";
+						}
+						break;
+					}
+					else {
+						$data['name'] = "Error";
+					}
+				}
+			}
+			else {
+				$data['name'] = "Error";
+			}
+		}
+		else {
+			$data['name'] = "Error";
+		}
+		return View::make('getroom', compact('data', 'getList'));
 	}
 }

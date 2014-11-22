@@ -19,7 +19,7 @@ Route::get('create',  array('before' => 'auth', 'uses' => 'PageController@create
 Route::post('createprocess', array('before' => 'auth', 'uses' => 'PageController@createRoomProcess'));
 
 Route::get('viewallrooms',  array('before' => 'auth', 'uses' => 'PageController@viewAllRooms'));
-
+Route::get('getroom/{id}',  array('before' => 'auth', 'uses' => 'PageController@getRoom'));
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');
