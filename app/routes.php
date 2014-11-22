@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'PageController@showWelcome');
+Route::get('contact', 'PageController@contact');
+Route::post('contactprocess', 'PageController@contactProcess');
