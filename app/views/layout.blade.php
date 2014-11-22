@@ -10,7 +10,7 @@
 	{{ HTML::style('css/font-awesome.min.css'); }}
 	<style>
 	body {
-		padding-top: 50px;
+		padding-top: 70px;
 		margin-bottom: 20px;
 	}
 	abbr[title] {
@@ -33,14 +33,12 @@
     <div class="container" style="margin-top:20px;">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-            	
-					@yield('content')
-			
+				@yield('content')
 			</div>
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 col-md-offset-6">
 				<span class="pull-right"><a href="{{action('PageController@contact')}}"><i class="fa fa-envelope-o"></i>  Contact</a>  |  <i class="fa fa-life-ring"></i>  FAQ | <i class="fa fa-copyright"></i>  PresentPoint</span>
 			</div>
 		</div>
