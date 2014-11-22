@@ -23,6 +23,10 @@ class PageController extends BaseController {
 		$data['name'] = "Contact";
 		return View::make('contact', compact('data'));
 	}
+	public function createRoom() {
+		$data['name'] = "Create a Room";
+		return View::make('createroom', compact('data'));
+	}
 	public function contactProcess() {
 		$validator = Validator::make(
 			array(

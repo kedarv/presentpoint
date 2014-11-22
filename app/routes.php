@@ -13,7 +13,8 @@
 
 Route::get('/', 'PageController@showWelcome');
 Route::get('contact', 'PageController@contact');
-Route::post('contactprocess', 'PageController@contactProcess');//
+Route::post('contactprocess', 'PageController@contactProcess');
+Route::get('create', 'PageController@createRoom');
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');

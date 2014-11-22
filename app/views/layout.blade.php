@@ -39,7 +39,8 @@
 		<hr/>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-6">
-				<span class="pull-right"><a href="{{action('PageController@contact')}}"><i class="fa fa-envelope-o"></i>  Contact</a>  |  <i class="fa fa-life-ring"></i>  FAQ | <i class="fa fa-copyright"></i>  PresentPoint</span>
+				<span class="pull-right">
+				<a href="{{action('PageController@contact')}}"><i class="fa fa-envelope-o"></i>  Contact</a>  |  <i class="fa fa-copyright"></i>  PresentPoint</span>
 			</div>
 		</div>
 	</div>
