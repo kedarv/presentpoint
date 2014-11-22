@@ -14,7 +14,8 @@
 Route::get('/', 'PageController@showWelcome');
 Route::get('contact', 'PageController@contact');
 Route::post('contactprocess', 'PageController@contactProcess');
-Route::get('create', 'PageController@createRoom');
+Route::get('create',  array('before' => 'auth', 'uses' => 'PageController@createRoom'));
+Route::post('contactprocess', array('before' => 'auth', 'uses' => 'PageController@createRoomProcess'));
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');

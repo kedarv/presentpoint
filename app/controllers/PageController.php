@@ -27,6 +27,47 @@ class PageController extends BaseController {
 		$data['name'] = "Create a Room";
 		return View::make('createroom', compact('data'));
 	}
+	public function createRoomProcess() {
+		$validator = Validator::make(
+			array(
+				'name' => Input::get('name'),
+				'identifier' => Input::get('identifier'),
+				'hooks' => Input::get('hooks'),
+			),
+			array(
+				'name' => 'required|alpha_dash',
+				'identifier' => 'required|alpha|min:3',
+				'hooks' => 'required|alpha_dash|min:1'
+			)
+		);
+		if (Auth::check()) {
+			if ($validator->fails()) {
+				$return_data[] = array("status" => "danger");
+				$return_data[] = $validator->messages();
+				header('Content-Type: application/json');
+				echo json_encode($return_data);
+			}
+			else {
+				$room = new Room;
+				$room->uid = Auth::user()->id;
+				$room->name = Input::get('name');
+				$room->identifier = Input::get('identifier');
+				$room->hooks = Input::get('firstname');
+				$room->save();
+					
+				$return_data = array('status' => 'success');			
+				header('Content-Type: application/json');
+				echo json_encode($return_data);
+			}
+		}
+		else {
+			$return_data[] = array('status' => 'danger');
+			$return_data[] = array('error' => 'You are not logged in!');			
+			header('Content-Type: application/json');
+			echo json_encode($return_data);
+		}
+	}
+
 	public function contactProcess() {
 		$validator = Validator::make(
 			array(
