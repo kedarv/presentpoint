@@ -77,6 +77,7 @@ class PageController extends BaseController {
 				$return_data = array('status' => 'success');			
 				header('Content-Type: application/json');
 				echo json_encode($return_data);
+
 			}
 		}
 		else {
@@ -150,10 +151,37 @@ class PageController extends BaseController {
 						else {
 							$records = Room::where('uid', '=', Auth::user()->id)->where('id','=',$id)->get()->toArray();
 							$rid = 0;
+							$pieces = array();
+							$date_create = 0;
+							$dt = null;
+							$prefix = "";
 							foreach($records as $a) {
 								$rid = $a['id'];
+								$prefix = $a['identifier'];
+								$pieces = explode("-", $a['hooks']);
+								$dt = new DateTime($a['created_at']);
 							}
-							//Log::info($rid);
+							$date_create = $dt->format('Y-m-d');
+							$onesearch = urlencode($prefix . $pieces[1] . ' since:' . $date_create);
+							$twosearch = urlencode($prefix . $pieces[2] . ' since:' . $date_create);
+							$threesearch = urlencode($prefix . $pieces[3] . ' since:' . $date_create);
+
+							$oneparam = array('q' => $onesearch);
+							$twoparam = array('q' => $twosearch);
+							$threeparam = array('q' => $threesearch);
+
+							$oneresponse = Twitter::getSearchTweets($oneparam, false, true);
+							$tworesponse = Twitter::getSearchTweets($twoparam, false, true);
+							$threeresponse = Twitter::getSearchTweets($threeparam, false, true);
+
+							$onecount = count((array)$oneresponse->statuses);
+							$twocount = count((array)$tworesponse->statuses);
+							$threecount = count((array)$threeresponse->statuses);
+							//Log::info(var_dump($oneresponse));
+
+							$qCircle = Circle::where('rid', '=', $rid)
+									->update(array('ONEvotes' => $onecount, 'TWOvotes' => $twocount, 'THREEvotes' => $threecount));
+
 							$circles = Circle::where('rid', '=', $rid)->get()->toArray();
 							$data['name'] = "Viewing Room";
 						}

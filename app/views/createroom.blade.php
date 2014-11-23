@@ -147,6 +147,7 @@ $("#presentation_create_form").submit(function() {
 				$(".form-group").removeClass("has-error");
 				$("#alert").fadeIn("slow").removeClass("alert-danger").addClass("alert-success").append("Room created. Redirecting...");
 				$("#presentation_create_form").slideUp("normal", function() { $(this).remove(); } );
+				window.location.replace('{{action('PageController@viewAllRooms')}}');
 			}
 		}
 	}, 'json');

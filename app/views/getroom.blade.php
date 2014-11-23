@@ -4,7 +4,6 @@
 <style>
 .circle{width:100px;height:100px;border-radius:50px;font-size:15px;color:#fff;line-height:100px;text-align:center;background:#000;margin: 0 auto;}
 </style>
-<div class="well">
 @if($data['name'] == "Error")
 	<div class="alert alert-danger">Whoops! You don't have sufficient privilages to view this page.</div>
 @else
@@ -12,8 +11,7 @@
 	<?php
 		$pieces = explode("-", $u['hooks']);
 	?>
-		<h1 class="text-left">Viewing Room <b>{{{$u['name']}}}</b></h1>
-	</div>
+	<b>{{{$u['name']}}}</b>
 	<hr/>
 	<div class="col-md-4">
 		<div class="circle" id="one">{{{$pieces[1]}}}</div>
