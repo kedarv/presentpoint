@@ -53,10 +53,22 @@ $(function () {
 <script>
 $("#presentation_create_form").submit(function() {
 	$("#alert").removeClass("alert-danger").empty();
+	var hookVal = "";
+	var i = 0;
+	$('input[name="hooks[]"]').each(function() {
+		if(i != 0) {
+			hookVal = hookVal + "-" + $(this).val();
+		}
+		else {
+			hookVal = $(this).val();
+		}
+		i++;
+	});
+
 	form_data = {
 		name: $('#name').val(),
         identifier: $('#identifier').val(),
-		hooks: $('input[name="hooks[]"]').val(),
+		hooks: hookVal,
 	};
 	$.ajax({
 		type: 'POST',

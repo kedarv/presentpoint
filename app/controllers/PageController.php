@@ -52,7 +52,7 @@ class PageController extends BaseController {
 				$room->uid = Auth::user()->id;
 				$room->name = Input::get('name');
 				$room->identifier = Input::get('identifier');
-				$room->hooks = Input::get('firstname');
+				$room->hooks = Input::get('hooks');
 				$room->save();
 					
 				$return_data = array('status' => 'success');			
