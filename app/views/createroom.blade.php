@@ -28,20 +28,75 @@ $(function () {
         <tr>
           <th style="width: 10px;">#</th>
           <th>Reference</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>1</td>
           <td>{{Form::text('hooks[]', null, array('class' => 'form-control', 'placeholder' => 'Reference to my presentation'))}}</td>
+          <td>
+          <div style="margin-top:10px;">
+          	<select name="ONEcolor">
+				  <option value="#7bd148">Green</option>
+				  <option value="#5484ed">Bold blue</option>
+				  <option value="#a4bdfc">Blue</option>
+				  <option value="#46d6db">Turquoise</option>
+				  <option value="#7ae7bf">Light green</option>
+				  <option value="#51b749">Bold green</option>
+				  <option value="#fbd75b">Yellow</option>
+				  <option value="#ffb878">Orange</option>
+				  <option value="#ff887c">Red</option>
+				  <option value="#dc2127">Bold red</option>
+				  <option value="#dbadff">Purple</option>
+				  <option value="#e1e1e1">Gray</option>
+			</select>
+			</div>
+		</td>        
         </tr>
         <tr>
           <td>2</td>
           <td>{{Form::text('hooks[]', null, array('class' => 'form-control', 'placeholder' => 'Reference to my presentation'))}}</td>
+          <td>
+          	<div style="margin-top:10px;">
+          	<select name="TWOcolor">
+				  <option value="#7bd148">Green</option>
+				  <option value="#5484ed">Bold blue</option>
+				  <option value="#a4bdfc">Blue</option>
+				  <option value="#46d6db">Turquoise</option>
+				  <option value="#7ae7bf">Light green</option>
+				  <option value="#51b749">Bold green</option>
+				  <option value="#fbd75b">Yellow</option>
+				  <option value="#ffb878">Orange</option>
+				  <option value="#ff887c">Red</option>
+				  <option value="#dc2127">Bold red</option>
+				  <option value="#dbadff">Purple</option>
+				  <option value="#e1e1e1">Gray</option>
+			</select>
+			</div>
+		</td>
         </tr>
         <tr>
           <td>3</td>
           <td>{{Form::text('hooks[]', null, array('class' => 'form-control', 'placeholder' => 'Reference to my presentation'))}}</td>
+          <td>
+          	<div style="margin-top:10px;">
+          	<select name="THREEcolor">
+				  <option value="#7bd148">Green</option>
+				  <option value="#5484ed">Bold blue</option>
+				  <option value="#a4bdfc">Blue</option>
+				  <option value="#46d6db">Turquoise</option>
+				  <option value="#7ae7bf">Light green</option>
+				  <option value="#51b749">Bold green</option>
+				  <option value="#fbd75b">Yellow</option>
+				  <option value="#ffb878">Orange</option>
+				  <option value="#ff887c">Red</option>
+				  <option value="#dc2127">Bold red</option>
+				  <option value="#dbadff">Purple</option>
+				  <option value="#e1e1e1">Gray</option>
+			</select>
+			</div>
+		</td>
         </tr>
       </tbody>
     </table>
@@ -50,7 +105,12 @@ $(function () {
 {{ Form::submit('Create Room', array('class' => 'btn btn-default')) }}
 </div>
 {{Form::close()}}
+{{ HTML::script('js/jquery.simplecolorpicker.js'); }}
 <script>
+$('select[name="ONEcolor"]').simplecolorpicker({picker: true, theme: 'fontawesome'});
+$('select[name="TWOcolor"]').simplecolorpicker({picker: true, theme: 'fontawesome'});
+$('select[name="THREEcolor"]').simplecolorpicker({picker: true, theme: 'fontawesome'});
+
 $("#presentation_create_form").submit(function() {
 	$("#alert").removeClass("alert-danger").empty();
 	var hookVal = "";

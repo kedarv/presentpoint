@@ -54,9 +54,11 @@ class PageController extends BaseController {
 				$room->identifier = Input::get('identifier');
 				$room->hooks = Input::get('hooks');
 				$room->save();
-					
+				
+				$query = Room::where('uid', '=', Auth::user()->id)->where('name','=', Input::get('name'))->select('id')->get()->toArray();
+
 				$circle = new Circle;
-				$circle->rid = Room::where('uid', '=', Auth::user()->id)->where('name','=',Input::get('name'))->select('id')->get();
+				$circle->rid = $query[0]['id'];
 				$circle->ONEvotes = 0;
 				$circle->TWOvotes = 0;
 				$circle->THREEvotes = 0;
@@ -137,6 +139,12 @@ class PageController extends BaseController {
 						}
 						else {
 							$records = Room::where('uid', '=', Auth::user()->id)->where('id','=',$id)->get()->toArray();
+							$rid = 0;
+							foreach($records as $a) {
+								$rid = $a['id'];
+							}
+							Log::info($rid);
+							$circles = Circle::where('rid', '=', $rid)->get()->toArray();
 							$data['name'] = "Viewing Room";
 						}
 						break;
@@ -153,6 +161,6 @@ class PageController extends BaseController {
 		else {
 			$data['name'] = "Error";
 		}
-		return View::make('getroom', compact('data', 'records'));
+		return View::make('getroom', compact('data', 'records', 'circles'));
 	}
 }

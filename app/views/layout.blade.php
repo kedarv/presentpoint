@@ -8,6 +8,7 @@
     <title>{{{ $data['name'] }}}</title>
 	{{ HTML::style('css/bootstrap.css'); }}
 	{{ HTML::style('css/font-awesome.min.css'); }}
+	{{ HTML::style('css/jquery.simplecolorpicker.css'); }}
 	<style>
 	body {
 		padding-top: 70px;
