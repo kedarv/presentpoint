@@ -54,15 +54,8 @@ $(function () {
 $("#presentation_create_form").submit(function() {
 	$("#alert").removeClass("alert-danger").empty();
 	var hookVal = "";
-	var i = 0;
-	$('input[name="hooks[]"]').each(function() {
-		if(i != 0) {
-			hookVal = hookVal + "-" + $(this).val();
-		}
-		else {
-			hookVal = $(this).val();
-		}
-		i++;
+	$('input[name="hooks[]"]').each(function() { 
+		hookVal = hookVal + "-" + $(this).val();
 	});
 
 	form_data = {

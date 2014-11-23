@@ -55,6 +55,13 @@ class PageController extends BaseController {
 				$room->hooks = Input::get('hooks');
 				$room->save();
 					
+				$circle = new Circle;
+				$circle->rid = Room::where('uid', '=', Auth::user()->id)->where('name','=',Input::get('name'))->select('id')->get();
+				$circle->ONEvotes = 0;
+				$circle->TWOvotes = 0;
+				$circle->THREEvotes = 0;
+				$circle->save();
+
 				$return_data = array('status' => 'success');			
 				header('Content-Type: application/json');
 				echo json_encode($return_data);
