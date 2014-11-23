@@ -33,11 +33,17 @@ class PageController extends BaseController {
 				'name' => Input::get('name'),
 				'identifier' => Input::get('identifier'),
 				'hooks' => Input::get('hooks'),
+				'ONEcolor' => Input::get('ONEcolor'),
+				'TWOcolor' => Input::get('TWOcolor'),
+				'THREEcolor' => Input::get('THREEcolor'),
 			),
 			array(
 				'name' => 'required|alpha_spaces',
 				'identifier' => 'required|alpha|min:3',
-				'hooks' => 'required|alpha_dash|min:1'
+				'hooks' => 'required|alpha_dash|min:1',
+				'ONEcolor' => 'required|hex',
+				'TWOcolor' => 'required|hex',
+				'THREEcolor' => 'required|hex'
 			)
 		);
 		if (Auth::check()) {
@@ -62,6 +68,10 @@ class PageController extends BaseController {
 				$circle->ONEvotes = 0;
 				$circle->TWOvotes = 0;
 				$circle->THREEvotes = 0;
+
+				$circle->ONEcolor = Input::get('ONEcolor');
+				$circle->TWOcolor = Input::get('TWOcolor');
+				$circle->THREEcolor = Input::get('THREEcolor');
 				$circle->save();
 
 				$return_data = array('status' => 'success');			
@@ -143,7 +153,7 @@ class PageController extends BaseController {
 							foreach($records as $a) {
 								$rid = $a['id'];
 							}
-							Log::info($rid);
+							//Log::info($rid);
 							$circles = Circle::where('rid', '=', $rid)->get()->toArray();
 							$data['name'] = "Viewing Room";
 						}

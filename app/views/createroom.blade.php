@@ -37,7 +37,7 @@ $(function () {
           <td>{{Form::text('hooks[]', null, array('class' => 'form-control', 'placeholder' => 'Reference to my presentation'))}}</td>
           <td>
           <div style="margin-top:10px;">
-          	<select name="ONEcolor">
+          	<select name="ONEcolor" id="ONEcolor">
 				  <option value="#7bd148">Green</option>
 				  <option value="#5484ed">Bold blue</option>
 				  <option value="#a4bdfc">Blue</option>
@@ -59,7 +59,7 @@ $(function () {
           <td>{{Form::text('hooks[]', null, array('class' => 'form-control', 'placeholder' => 'Reference to my presentation'))}}</td>
           <td>
           	<div style="margin-top:10px;">
-          	<select name="TWOcolor">
+          	<select name="TWOcolor" id="TWOcolor">
 				  <option value="#7bd148">Green</option>
 				  <option value="#5484ed">Bold blue</option>
 				  <option value="#a4bdfc">Blue</option>
@@ -81,7 +81,7 @@ $(function () {
           <td>{{Form::text('hooks[]', null, array('class' => 'form-control', 'placeholder' => 'Reference to my presentation'))}}</td>
           <td>
           	<div style="margin-top:10px;">
-          	<select name="THREEcolor">
+          	<select name="THREEcolor" id="THREEcolor">
 				  <option value="#7bd148">Green</option>
 				  <option value="#5484ed">Bold blue</option>
 				  <option value="#a4bdfc">Blue</option>
@@ -122,6 +122,9 @@ $("#presentation_create_form").submit(function() {
 		name: $('#name').val(),
         identifier: $('#identifier').val(),
 		hooks: hookVal,
+		ONEcolor: $('#ONEcolor').val(),
+		TWOcolor: $('#TWOcolor').val(),
+		THREEcolor: $('#THREEcolor').val(),
 	};
 	$.ajax({
 		type: 'POST',

@@ -25,7 +25,6 @@
 		<div class="circle" id="three">{{{$pieces[3]}}}</div>
 	</div>
 	@endforeach
-
 	<script>
 		$(document).ready(function() {
 			@foreach($circles as $c)
@@ -36,9 +35,9 @@
 				var TWOcolor = "{{{$c['TWOcolor']}}}";
 				var THREEcolor = "{{{$c['THREEcolor']}}}";
 			@endforeach
-			$('#one').css('width', ONEvotes*20+20).css('height', ONEvotes*20+20);
-			$('#two').css('width', TWOvotes*20+20).css('height', TWOvotes*20+20);
-			$('#three').css('width', THREEvotes*20+20).css('height', THREEvotes*20+20);
+			$('#one').css('width', ONEvotes*20+20).css('height', ONEvotes*20+20).css('background', ONEcolor).css('opacity', ONEvotes/9);
+			$('#two').css('width', TWOvotes*20+20).css('height', TWOvotes*20+20).css('background', TWOcolor).css('opacity', TWOvotes/9);
+			$('#three').css('width', THREEvotes*20+20).css('height', THREEvotes*20+20).css('background', THREEcolor).css('opacity', THREEvotes/9);
 		});
 	</script>
 @endif
