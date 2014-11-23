@@ -162,9 +162,13 @@ class PageController extends BaseController {
 								$dt = new DateTime($a['created_at']);
 							}
 							$date_create = $dt->format('Y-m-d');
-							$onesearch = urlencode($prefix . $pieces[1] . ' since:' . $date_create);
-							$twosearch = urlencode($prefix . $pieces[2] . ' since:' . $date_create);
-							$threesearch = urlencode($prefix . $pieces[3] . ' since:' . $date_create);
+							// $onesearch = urlencode($prefix . $pieces[1] . ' since:' . $date_create);
+							// $twosearch = urlencode($prefix . $pieces[2] . ' since:' . $date_create);
+							// $threesearch = urlencode($prefix . $pieces[3] . ' since:' . $date_create);
+
+							$onesearch = urlencode($prefix . $pieces[1]);
+							$twosearch = urlencode($prefix . $pieces[2]);
+							$threesearch = urlencode($prefix . $pieces[3]);
 
 							$oneparam = array('q' => $onesearch);
 							$twoparam = array('q' => $twosearch);
